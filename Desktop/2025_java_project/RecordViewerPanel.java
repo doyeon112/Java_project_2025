@@ -7,34 +7,34 @@ public class RecordViewerPanel extends JPanel {
     private List<Integer> history;
 
     public RecordViewerPanel(JFrame parentFrame) {
-        // 🔹 기록 데이터 불러오기
+        // 기록 데이터 불러오기
         history = FocusHistoryManager.load();
 
-        // 🔹 배경 이미지 설정
+        //  배경 이미지 설정
         ImageIcon icon = new ImageIcon("img/bg.jpg");
         Image bgImage = icon.getImage();
         BackgroundPanel bgPanel = new BackgroundPanel(bgImage);
         bgPanel.setLayout(new BoxLayout(bgPanel, BoxLayout.Y_AXIS));
         bgPanel.setPreferredSize(new Dimension(360, 640)); // 기본 화면 크기
 
-        // 🔹 이 패널 전체에 배경 패널 넣기
+        // 이 패널 전체에 배경 패널 넣기
         setLayout(new BorderLayout());
         add(bgPanel, BorderLayout.CENTER);
 
-        // 🔹 유리 느낌의 Glass Panel 생성
+        // 유리 느낌의 Glass Panel 생성
         RoundedGlassPanel glassPanel = new RoundedGlassPanel();
         glassPanel.setLayout(new BoxLayout(glassPanel, BoxLayout.Y_AXIS));
         glassPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         glassPanel.setMaximumSize(new Dimension(360, 500));
         glassPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // 🔹 차트 패널: 기록 데이터 시각화
+        // 차트 패널: 기록 데이터 시각화
         JPanel chartPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                // 🔸 차트 타이틀
+                // 차트 타이틀
                 String title = "Focus Time History Chart";
                 Font titleFont = new Font("Malgun Gothic", Font.BOLD, 20);
                 g.setFont(titleFont);
@@ -43,7 +43,7 @@ public class RecordViewerPanel extends JPanel {
                 int titleX = (getWidth() - titleWidth) / 2;
                 g.drawString(title, titleX, 40);
 
-                // 🔸 기록 막대 그래프
+                // 기록 막대 그래프
                 int baseY = 250;
                 for (int i = 0; i < history.size(); i++) {
                     int value = history.get(i);
@@ -65,7 +65,7 @@ public class RecordViewerPanel extends JPanel {
         chartPanel.setOpaque(false);
         chartPanel.setPreferredSize(new Dimension(360, 300));
 
-        // 🔹 뒤로 가기 버튼
+        // 뒤로 가기 버튼
         RoundedGradientButton backButton = new RoundedGradientButton("Back");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.addActionListener(e -> {
@@ -75,18 +75,18 @@ public class RecordViewerPanel extends JPanel {
             parentFrame.repaint();
         });
 
-        // 🔹 glassPanel에 구성요소 추가
+        // glassPanel에 구성요소 추가
         glassPanel.add(chartPanel);
         glassPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         glassPanel.add(backButton);
 
-        // 🔹 glassPanel을 가운데 배치
+        // glassPanel을 가운데 배치
         bgPanel.add(Box.createVerticalGlue());
         bgPanel.add(glassPanel);
         bgPanel.add(Box.createVerticalGlue());
     }
 
-    // 🔸 배경 이미지를 표시하는 패널
+    // 배경 이미지를 표시하는 패널
     public class BackgroundPanel extends JPanel {
         private Image backgroundImage;
 
@@ -103,7 +103,7 @@ public class RecordViewerPanel extends JPanel {
         }
     }
 
-    // 🔸 둥글고 반투명한 유리 박스 패널
+    // 둥글고 반투명한 유리 박스 패널
     class RoundedGlassPanel extends JPanel {
         public RoundedGlassPanel() {
             setOpaque(false);
@@ -120,7 +120,7 @@ public class RecordViewerPanel extends JPanel {
         }
     }
 
-    // 🔸 둥근 버튼 클래스 (그라디언트 배경)
+    // 둥근 버튼 클래스 (그라디언트 배경)
     class RoundedGradientButton extends JButton {
         public RoundedGradientButton(String text) {
             super(text);

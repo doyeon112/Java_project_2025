@@ -44,8 +44,9 @@ public class DigitalFatigueAppPanel extends JPanel {
     }
 
     public DigitalFatigueAppPanel(JFrame frame) {
-        ImageIcon icon = new ImageIcon("img/bg.jpg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/bg.jpg"));
         Image bgImage = icon.getImage();
+
 
         BackgroundPanel bgPanel = new BackgroundPanel(bgImage);
         bgPanel.setLayout(new BoxLayout(bgPanel, BoxLayout.Y_AXIS));

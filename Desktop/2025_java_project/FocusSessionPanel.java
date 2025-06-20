@@ -51,14 +51,14 @@ backButton.addActionListener(e -> {
     parentFrame.repaint();
 });
 
-    // 🔹 타이머 라벨 (맨 위 중앙)
+    // 타이머 라벨 (맨 위 중앙)
     timerLabel = new JLabel("00:00", SwingConstants.CENTER);
     timerLabel.setFont(new Font("Malgun Gothic", Font.BOLD, 40));
     timerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     timerLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
      // bgPanel.add(timerLabel);
 
-    // 🔹 입력 패널
+    // 입력 패널
     JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));
     inputPanel.setOpaque(false);   //  투명하게 해서 배경 보이게
     inputPanel.setMaximumSize(new Dimension(400, 100));
@@ -104,7 +104,7 @@ bgPanel.add(Box.createVerticalGlue());
 
     bgPanel.add(Box.createRigidArea(new Dimension(0, 20))); // 간격
 
-    // 🔹 버튼 기능
+    // 버튼 기능
     startButton.addActionListener(e -> startSession());
     backButton.addActionListener(e -> {
         parentFrame.getContentPane().removeAll();
