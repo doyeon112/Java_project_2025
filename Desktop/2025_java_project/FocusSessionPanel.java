@@ -7,6 +7,7 @@ import java.awt.event.*;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class FocusSessionPanel extends JPanel {
     private JTextField focusInput, restInput;
@@ -22,8 +23,9 @@ public class FocusSessionPanel extends JPanel {
         this.parentFrame = parent;
         
         //  배경 이미지 추가
-    ImageIcon icon = new ImageIcon("img/bg.jpg");
-    Image bgImage = icon.getImage();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/bg.jpg"));
+        Image bgImage = icon.getImage();
+
     BackgroundPanel bgPanel = new BackgroundPanel(bgImage);
     bgPanel.setLayout(new BoxLayout(bgPanel, BoxLayout.Y_AXIS));
     bgPanel.setPreferredSize(new Dimension(360, 640));
@@ -179,8 +181,8 @@ public class RoundedGradientButton extends JButton {
         // 소리 관련
 private void playAlarmSound() {
     try {
-        File soundFile = new File("sound/collect_item_hurry_up_alarm_warning_01.wav");
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
+        InputStream is = getClass().getResourceAsStream("/sound/collect_item_hurry_up_alarm_warning_01.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(is);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
         clip.start();

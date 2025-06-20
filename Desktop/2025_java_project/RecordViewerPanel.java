@@ -11,8 +11,9 @@ public class RecordViewerPanel extends JPanel {
         history = FocusHistoryManager.load();
 
         //  배경 이미지 설정
-        ImageIcon icon = new ImageIcon("img/bg.jpg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/bg.jpg"));
         Image bgImage = icon.getImage();
+
         BackgroundPanel bgPanel = new BackgroundPanel(bgImage);
         bgPanel.setLayout(new BoxLayout(bgPanel, BoxLayout.Y_AXIS));
         bgPanel.setPreferredSize(new Dimension(360, 640)); // 기본 화면 크기
